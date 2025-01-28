@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+    <h1>Agenda</h1>
+    <input id="tarefa" type="text" placeholder="Digite sua tarefa"></input>
+    <input id="data" type="date"></input>
+    <button onclick="adicionarTarefa()">Adicionar Tarefa</button>
+    <p id="exibir"></p>
+    <div id="lista-de-tarefas"></div>
+    </div>
+ 
+    <script>
+        // Seção de modelagem (dados)
+        let afazeres;
+        const afazeresSalvos = JSON.parse(localStorage.getItem("afazeres"));
+        if(Array.isArray(afazeresSalvos)) {
+            afazeres = afazeresSalvos;
+        } else {
+            afazeres = [];
+        }
+ 
+        function salvarTarefas(){
+            localStorage.setItem("afazeres", JSON.stringify(afazeres));
+        }
+ 
+        // Seção de Controle
+        function adicionarTarefa(){
+            const caixaDeTexto = document.getElementById("tarefa");
+            const caixaDeData = document.getElementById("data");
+            const tarefa = caixaDeTexto.value;
+            const data = caixaDeData.value;
+ 
+            if(tarefa && data) {
+                afazeres.push({
+                    nome: tarefa,
+                    id: Date.now(),
+                    data: data
+                });
+                salvarTarefas();
+                renderizar();
+                caixaDeTexto.value = "";  
+            }
+        }
+ 
+        function renderizar(){
+            document.getElementById("lista-de-tarefas").innerHTML = "";
+ 
+            afazeres.forEach(function(tarefa){
+                const elemento = document.createElement("div");
+                elemento.innerHTML = `${tarefa.nome} - ${tarefa.data}`;
+ 
+                const botao = document.createElement("button");
+                botao.innerText = "Apagar";
+                botao.style = "margin-left: 12px"; 
+                botao.id = tarefa.id;
+                botao.onclick = removerTarefa;
+                elemento.appendChild(botao);
+ 
+                const listaDeTarefas = document.getElementById("lista-de-tarefas");
+                listaDeTarefas.appendChild(elemento);
+            });
+        }
+ 
+        function removerTarefa(evento){
+            const botao = evento.target;
+            const id = botao.id;
+            afazeres = afazeres.filter(function(tarefa){
+                return tarefa.id != id;
+            });
+            salvarTarefas();
+            renderizar();
+        }
+ 
+        renderizar();
+    </script>
+</body>
+</html>
