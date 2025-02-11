@@ -25,11 +25,7 @@ class Tarefa:
         tarefas = db.consultar(sql)
         db.desconectar()
         return tarefas if tarefas else []
-        # if tarefas:
-        #     return tarefas
-        # else:
-        #     return[]
- 
+
     def apagarTarefa(self):
         """Apaga uma tarefa cadastrada no banco de dados."""
         db = Database()
@@ -42,5 +38,5 @@ class Tarefa:
  
  
 # Área 51
-tarefa = Tarefa(1, 'Teste de tarefa', None)
-print(tarefa)
+tarefa = Tarefa(2, 'Teste de tarefa', None)
+tarefa.apagarTarefa()
