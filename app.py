@@ -1,5 +1,6 @@
 from flask import Flask, redirect, render_template, request, url_for
 from model.tarefa import Tarefa
+from model import tarefa
 
 app = Flask(__name__)
 
@@ -15,3 +16,7 @@ def index():
     tarefas = Tarefa.listarTarefas()
     return render_template('index.html', tarefas=tarefas, title='Minhas Tarefas')
 
+@app.route('/delete/<int:idTarefa>')
+def delete(idTarefa):
+    Tarefa.apagarTarefa(idTarefa)
+    return redirect(url_for('index'))

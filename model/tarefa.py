@@ -27,13 +27,14 @@ class Tarefa:
         db.desconectar()
         return tarefas if tarefas else []
 
-    def apagarTarefa(self):
+    @staticmethod
+    def apagarTarefa(idTarefa):
         """Apaga uma tarefa cadastrada no banco de dados."""
         db = Database()
         db.conectar()
  
         sql = 'DELETE FROM tarefa WHERE id = %s'
-        params = (self.id) # Precisa passar como tupla? (a, b, c, ...) SIM!
+        params = (idTarefa,) # Precisa passar como tupla? (a, b, c, ...) SIM!
         db.executar(sql, params)
         db.desconectar()
  
