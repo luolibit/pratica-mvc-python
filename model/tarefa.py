@@ -37,4 +37,11 @@ class Tarefa:
         params = (idTarefa,) # Precisa passar como tupla? (a, b, c, ...) SIM!
         db.executar(sql, params)
         db.desconectar()
+
+    def atualizar()
+        """Edita uma tarefa no próprio formulário da página de cadastro"""
+        db = Database()
+        db.conectar()
+
+        sql = 'UPDATE agenda.tarefa SET titulo, data_conclusao = %s WHERE (id = ) '
  
