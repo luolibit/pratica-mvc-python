@@ -10,20 +10,20 @@ class Database:
         self.username = getenv('DB_USER')
         self.password = getenv('DB_PSWD')
         self.database = getenv('DB_NAME')
-        self.connection = None
-        self.cursor = None
+        self.connection = None # Inicialização da conexão
+        self.cursor = None # Incialização do cursor
 
     def conectar(self):
         """Estabelece uma conexão com o banco de dados """
         try:
-            self.connection = mc.connect(
-                host = self.host,
+            self.connection = mc.connect( # mc = mysql connector
+                host = self.host, 
                 database = self.database,
                 user = self.username,
                 password = self.password
             )
             if self.connection.is_connected():
-                self.cursor = self.connection.cursor(dictionary=True)
+                self.cursor = self.connection.cursor(dictionary=True) # trazer dados em forma de dicionário
                 print('Conexão ao banco de dados realizada com sucesso!')
         except Error as e:
             print(f'Erro de conexão: {e}')

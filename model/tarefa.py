@@ -1,7 +1,7 @@
-from database import Database
+from model.database import Database
  
 class Tarefa:
-    def __init__(self, id, titulo, data_conclusao):
+    def __init__(self, titulo, id=None,  data_conclusao=None):
         self.id = id
         self.titulo = titulo
         self.data_conclusao = data_conclusao
@@ -16,7 +16,8 @@ class Tarefa:
         db.executar(sql, params)
         db.desconectar()
  
-    def listarTarefa():
+    @staticmethod # decorador
+    def listarTarefas():
         """Retornar uma lista com todas as tarefas cadastradas."""
         db = Database()
         db.conectar()
@@ -36,7 +37,3 @@ class Tarefa:
         db.executar(sql, params)
         db.desconectar()
  
- 
-# Área 51
-tarefa = Tarefa(2, 'Teste de tarefa', None)
-tarefa.apagarTarefa()

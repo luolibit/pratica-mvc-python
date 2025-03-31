@@ -1,62 +1,39 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #fce4f9;
-    color: #232222;
-
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    padding: 20px;
-    display: flex;
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
 }
-
-.container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    text-align: center;
+ 
+#Tarefa{
+    background-color: rgb(130, 205, 230);
+    border-radius: 20px;
+    padding: 8px;
+    border: 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    margin-top: 10px;
 }
-
-h1 {
-    text-align: center;
-    color: #ec407a; 
-    margin-bottom: 20px;
+ 
+button{
+    background-color: rgb(43, 147, 226);
+    border-radius: 20px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border: 0px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+    font-size: 11px;
 }
-
-input[type="text"],
-input[type="date"],
-button {
-    width: 90%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border-radius: 5px;
-    border: 1px solid #ec407a; 
-    font-size: 16px;
+ 
+#tarefa{
+    border-radius: 20px;
+    border: 2px;
+    padding: 8px;
+    background-color: rgb(247, 241, 255);
 }
-
-button {
-    background-color: #ec407a;  
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
+ 
+#data{
+    border-radius: 20px;
+    border: 2px;
+    padding: 8px;
+    background-color: rgb(241, 251, 255);
+    margin-left: 10px;
 }
-
-.tarefa-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #f48fb1; 
-}
-
-.tarefa-item button {
-    background-color: #f06292;  
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-}
-
