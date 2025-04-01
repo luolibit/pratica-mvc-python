@@ -25,9 +25,11 @@ def delete(idTarefa):
 def update(idTarefa):
     if request.method =='GET': 
         tarefa = Tarefa.buscarTarefa(idTarefa)
+        tarefas = Tarefa.listarTarefas()
         return render_template('index.html', tarefa=tarefa, title='Editar Tarefa')
 
     elif request.method == 'POST':
+        idTarefa = request.form.get('idTarefa')
         titulo = request.form['titulo']
         data_conclusao = request.form['data_conclusao']
         tarefa = Tarefa(titulo=titulo, data_conclusao=data_conclusao, id=idTarefa)

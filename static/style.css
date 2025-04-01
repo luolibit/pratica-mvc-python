@@ -37,3 +37,12 @@ button{
     background-color: rgb(241, 251, 255);
     margin-left: 10px;
 }
+
+a {
+    text-decoration: none;
+    border-radius: 20px;
+    color: black;
+    padding: 5px;
+    background-color: rgb(184, 238, 238);
+    font-size: 11px;
+}
