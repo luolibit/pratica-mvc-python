@@ -11,8 +11,24 @@
         {% for tarefa in tarefas %}
         <li>
             {{ tarefa.titulo }} - {{ tarefa.data_conclusao }} 
+            <a href="{{ url_for('update', idTarefa=tarefa.id) }}">Editar</a>
             <a href="{{ url_for('delete', idTarefa=tarefa.id) }}">Apagar</a>
         </li>
         {% endfor %}
     </ul>
 {% endblock %}
+
+<!-- 
+view traz a informação para a tela
+controler recebe, manda pro modelo, view pega as informações carrega no formulario
+edit é adptação da criação de uma nova tarefa
+rota update usar if e else - POST salvar tarefa GET trazer a informação para o formulario
+
+1 - app recebe a informaçaõ que clicou em editar
+2 - tarefa busca a id da tarefa
+3 - vai para o index para exibir a tarefa no formulário
+
+4 - app recebe a alteração
+5 - manda para a tarefa para executar a função atualizar
+6 - vai para o index para mandar a tarefa editada de volta para a lista
+-->

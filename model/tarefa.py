@@ -38,10 +38,22 @@ class Tarefa:
         db.executar(sql, params)
         db.desconectar()
 
-    def atualizar()
+    def buscarTarefa(idTarefa):
+        """Busca a tarefa pelo id"""
+        db = Database()
+        db.conectar()
+
+        sql = 'SELECT id, titulo, data_conclusao FROM tarefa WHERE id = %s'
+        params = (idTarefa,)
+        db.consultar(sql, params)
+        db.desconectar() 
+
+    def atualizarTarefa(self):
         """Edita uma tarefa no próprio formulário da página de cadastro"""
         db = Database()
         db.conectar()
 
-        sql = 'UPDATE agenda.tarefa SET titulo, data_conclusao = %s WHERE (id = ) '
- 
+        sql = 'UPDATE agenda.tarefa SET titulo, data_conclusao = %s WHERE id = %s '
+        params = (self.titulo, self.data_conclusao, self.id)
+        db.executar(sql, params)
+        db.desconectar()

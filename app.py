@@ -1,6 +1,5 @@
 from flask import Flask, redirect, render_template, request, url_for
 from model.tarefa import Tarefa
-from model import tarefa
 
 app = Flask(__name__)
 
@@ -20,3 +19,17 @@ def index():
 def delete(idTarefa):
     Tarefa.apagarTarefa(idTarefa)
     return redirect(url_for('index'))
+
+
+@app.route('/update/<int:idTarefa>', methods=['GET', 'POST'])
+def update(idTarefa):
+    if request.method =='GET': 
+        tarefa = Tarefa.buscarTarefa(idTarefa)
+        return render_template('index.html', tarefa=tarefa, title='Editar Tarefa')
+
+    elif request.method == 'POST':
+        titulo = request.form['titulo']
+        data_conclusao = request.form['data_conclusao']
+        tarefa = Tarefa(titulo=titulo, data_conclusao=data_conclusao, id=idTarefa)
+        tarefa.atualizarTarefa()
+        return redirect(url_for('index'))
